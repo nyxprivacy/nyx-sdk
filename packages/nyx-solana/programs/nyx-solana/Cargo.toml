@@ -1,0 +1,35 @@
+[workspace]
+# This package has its own workspace
+
+[package]
+name = "nyx-privacy"
+version = "0.1.0"
+edition = "2021"
+description = "Nyx Privacy on-chain program for Solana"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "nyx_solana"
+
+[features]
+no-entrypoint = []
+cpi = ["no-entrypoint"]
+
+[dependencies]
+# Solana
+solana-program = "1.17"
+anchor-lang = "0.29"
+anchor-spl = "0.29"
+
+# Utilities
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+bs58 = "0.5"
+
+# Groth16 on-chain verification
+groth16-solana = "0.2"
+
+[dev-dependencies]
+solana-program-test = "1.17"
+solana-sdk = "1.17"
+tokio = { version = "1.0", features = ["full"] }
